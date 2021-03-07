@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Login } from "./Components/user-registration/Login/login.component";
+import { useState } from "react";
+import { SignUp } from "./Components/user-registration/SignUp/signup.component";
+import { Home } from "./Components/home/home-screen.component";
 
 function App() {
+  const [screen, setScreen] = useState({
+    login: "visible",
+    signup: "invisible",
+    home: "invisible",
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Login isLogIn={screen.login} setLogIn={setScreen}></Login>
+      <SignUp isSignUp={screen.signup} setSignUp={setScreen}></SignUp>
+      <Home isHome={screen.home} setHome={setScreen}></Home>
     </div>
   );
 }

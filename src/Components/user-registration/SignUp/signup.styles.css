@@ -1,0 +1,10 @@
+.visible {
+  visibility: visible;
+  position: static;
+}
+
+.invisible {
+  visibility: hidden;
+  position: absolute;
+  top: -9999px;
+}
