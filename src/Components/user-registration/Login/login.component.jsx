@@ -2,12 +2,13 @@ import React from 'react';
 import './login.styles.css';
 
 export const Login = (props) => {
+
     return (
         <div className={props.isLogIn}>
             <h1>LogIn</h1>
             <form>
-                <span>Username: </span><input type="text" name="username" placeholder="Enter Username" />
-                <span>Password: </span><input type="text" name="password" placeholder="Enter password" />
+                <span>Username: </span><input type="text" name="username" placeholder="Enter Username" />< br />
+                <span>Password: </span><input type="password" name="password" placeholder="Enter password" /><br />
                 <input type="Submit" value="Submit" name="Submit" onClick={(e) => {
                     e.preventDefault();
                     props.setLogIn({
@@ -15,7 +16,7 @@ export const Login = (props) => {
                         signup: "invisible",
                         home: "visible"
                     })
-                }} />
+                }} /><br />
                 <button onClick={(e) => {
                     e.preventDefault();
                     props.setLogIn({
@@ -23,7 +24,7 @@ export const Login = (props) => {
                         signup: "visible",
                         home: "invisible"
                     });
-                }}>SignUp</button>
+                }}>SignUp</button><br />
             </form>
         </div>
     )

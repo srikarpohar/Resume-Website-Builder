@@ -7,10 +7,10 @@ export const SignUp = (props) => {
         <div className={props.isSignUp}>
             <h1>SignUp</h1>
             <form>
-                <span>Username: </span><input type="text" name="username" placeholder="Enter Username" />
-                <span>Email: </span><input type="text" name="email" placeholder="Enter Email" />
-                <span>Password: </span><input type="text" name="password" placeholder="Enter Password" />
-                <span>Confirm Password: </span><input type="text" name="repassword" placeholder="Re-Enter Password" />
+                <span>Username: </span><input type="text" name="username" placeholder="Enter Username" /><br />
+                <span>Email: </span><input type="email" name="email" placeholder="Enter Email" /><br />
+                <span>Password: </span><input type="password" name="password" placeholder="Enter Password" /><br />
+                <span>Confirm Password: </span><input type="password" name="repassword" placeholder="Re-Enter Password" /><br />
                 <input type="Submit" value="Submit" name="Submit" onClick={(e) => {
                     e.preventDefault();
                     props.setSignUp({
@@ -18,7 +18,7 @@ export const SignUp = (props) => {
                         signup: "invisible",
                         home: "visible"
                     });
-                }} />
+                }} /><br />
                 <button onClick={(e) => {
                     e.preventDefault();
                     props.setSignUp({
@@ -26,7 +26,7 @@ export const SignUp = (props) => {
                         signup: "invisible",
                         home: "invisible"
                     })
-                }}>LogIn</button>
+                }}>LogIn</button><br />
             </form>
         </div>
     )
