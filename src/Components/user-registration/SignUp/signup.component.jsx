@@ -1,9 +1,8 @@
 import React from 'react';
-
-import './signup.styles.css';
 import { setCurrentUser } from '../../../redux/user/user.actions';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
+import './signup.styles.scss';
 
 class SignUp extends React.Component {
     constructor(props) {
@@ -34,14 +33,14 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <div style={{ float: 'right' }}>
-                <h1>SignUp</h1>
-                <form>
-                    <span>Username: </span><input required type="text" name="username" placeholder="Enter Username" value={this.state.username} onChange={this.handleChange} /><br />
-                    <span>Email: </span><input required type="email" name="email" placeholder="Enter Email" value={this.state.email} onChange={this.handleChange} /><br />
-                    <span>Password: </span><input required type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} /><br />
-                    <span>Confirm Password: </span><input required type="password" name="repassword" placeholder="Re-Enter Password" value={this.state.repassword} onChange={this.handleChange} /><br />
-                    <Link to="/home" onClick={this.handleSubmit}>SignUp</Link>
+            <div className="signup">
+                <h1 className="signuptext">SignUp</h1>
+                <form className="signupform">
+                    <input required type="text" name="username" placeholder="Enter Username" value={this.state.username} onChange={this.handleChange} /><br />
+                    <input required type="email" name="email" placeholder="Enter Email" value={this.state.email} onChange={this.handleChange} /><br />
+                    <input className="pass" required type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} /><br />
+                    <input className="repass" required type="password" name="repassword" placeholder="Re-Enter Password" value={this.state.repassword} onChange={this.handleChange} /><br />
+                    <Link className="signupbutton" to="/home" onClick={this.handleSubmit}>SignUp</Link>
                 </form>
             </div>
         )

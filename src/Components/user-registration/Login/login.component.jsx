@@ -1,8 +1,8 @@
 import React from 'react';
-import './login.styles.css';
 import { setCurrentUser } from '../../../redux/user/user.actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import './login.styles.scss';
 
 
 class Login extends React.Component {
@@ -45,13 +45,13 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div style={{ float: 'left' }}>
-                <h1>LogIn</h1>
-                <form>
-                    <span>Username/Email: </span><input type="text" name="username" placeholder="Enter Username" onChange={this.handleChange} />< br />
-                    <span>Password: </span><input type="password" name="password" placeholder="Enter password" onChange={this.handleChange} /><br />
-                    <Link to="/home" onClick={this.handleSubmit} >LogIn</Link><br />
-                    <Link to="/home" onClick={this.handleGoogleLogin} >LogIn with Google</Link>
+            <div className="login">
+                <h1 className="logintext">LogIn</h1>
+                <form className="loginform">
+                    <input type="text" name="username" placeholder="Enter Username" onChange={this.handleChange} />< br />
+                    <input type="password" name="password" placeholder="Enter password" onChange={this.handleChange} /><br />
+                    <Link className="loginbutton" to="/home" onClick={this.handleSubmit} >LogIn</Link><br />
+                    <Link className="googlelogin" to="/home" onClick={this.handleGoogleLogin} >LogIn with Google</Link>
                 </form>
             </div>
         )
