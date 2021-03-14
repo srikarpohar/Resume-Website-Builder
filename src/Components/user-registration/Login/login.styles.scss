@@ -1,0 +1,79 @@
+.login {
+  margin-left: 250px;
+  margin-top: 50px;
+  width: 400px;
+  height: 470px;
+  background-color: #dd2d42;
+  border: 5px solid yellowgreen;
+  border-radius: 5px;
+  color: white;
+
+  & .logintext {
+    position: absolute;
+    left: 280px;
+    top: 130px;
+  }
+
+  & .loginform {
+    & input[type="text"] {
+      position: relative;
+      left: -40px;
+      top: 100px;
+      width: 250px;
+      height: 30px;
+      padding-left: 20px;
+      border: 2px solid black;
+      border-radius: 5px;
+
+      &:focus {
+        border-color: green;
+      }
+    }
+
+    & input[type="password"] {
+      position: relative;
+      left: -42px;
+      top: 150px;
+      width: 250px;
+      height: 30px;
+      padding-left: 20px;
+      border: 2px solid black;
+      border-radius: 5px;
+
+      &:focus {
+        border-color: green;
+      }
+    }
+
+    & .loginbutton {
+      color: white;
+      position: absolute;
+      left: 270px;
+      top: 370px;
+      text-decoration: none;
+      width: 125px;
+      height: 30px;
+      padding-top: 5px;
+      text-align: center;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: #284b63;
+    }
+
+    & .googlelogin {
+      position: absolute;
+      text-decoration: none;
+      color: white;
+      left: 420px;
+      top: 370px;
+      width: 200px;
+      height: 30px;
+      padding-top: 5px;
+      text-align: center;
+      vertical-align: middle;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: #284b63;
+    }
+  }
+}

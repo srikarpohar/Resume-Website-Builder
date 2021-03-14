@@ -1,23 +1,87 @@
 import "./App.css";
-import { Login } from "./Components/user-registration/Login/login.component";
-import { useState } from "react";
-import { SignUp } from "./Components/user-registration/SignUp/signup.component";
-import { Home } from "./Components/home/home-screen.component";
+import React from "react";
+import { LoginPage } from "./pages/loginpage/loginpage";
+import Home from "./Components/home/home-screen.component";
+import { Route, Switch } from "react-router-dom";
+import { connect } from "react-redux";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import { setCurrentUser } from "./redux/user/user.actions";
 
-function App() {
-  const [screen, setScreen] = useState({
-    login: "visible",
-    signup: "invisible",
-    home: "invisible",
-  });
+class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className="App">
-      <Login isLogIn={screen.login} setLogIn={setScreen}></Login>
-      <SignUp isSignUp={screen.signup} setSignUp={setScreen}></SignUp>
-      <Home isHome={screen.home} setHome={setScreen}></Home>
-    </div>
-  );
+    this.isFirstTime = true;
+    this.unsubscribeFromAuth = null;
+  }
+
+  componentDidMount() {
+    const { setCurrentUser } = this.props;
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot((snapShot) => {
+          const userData = snapShot.data();
+          setCurrentUser({
+            id: snapShot.id,
+            username: userData.displayName,
+            email: userData.email,
+            count: 1,
+          });
+        });
+      } else {
+        setCurrentUser({
+          username: null,
+          email: null,
+          count: 1,
+        });
+      }
+    });
+    this.isFirstTime = false;
+  }
+
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+
+  choosePage = () => {
+    return this.props.count === 1 ? (
+      this.props.currentUser ? (
+        <Home />
+      ) : (
+        <LoginPage />
+      )
+    ) : (
+      <div></div>
+    );
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Switch>
+          <Route exact path="/" render={() => this.choosePage()} />
+          <Route
+            exact
+            path="/home"
+            render={() => (this.props.currentUser ? <Home /> : <LoginPage />)}
+          />
+        </Switch>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStatetoProps = (state) => ({
+  currentUser: state.user.currentUser, // state has different root reducers which return different objects
+  count: state.user.count,
+});
+
+const mapDispatchtoProps = (dispatch) => ({
+  setCurrentUser: (user) => {
+    dispatch(setCurrentUser(user));
+  },
+});
+
+export default connect(mapStatetoProps, mapDispatchtoProps)(App);

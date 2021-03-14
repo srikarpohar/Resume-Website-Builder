@@ -1,0 +1,95 @@
+.signup {
+  position: absolute;
+  margin-left: 720px;
+  margin-top: -480px;
+  width: 400px;
+  height: 470px;
+  background-color: #dd2d42;
+  border: 5px solid yellowgreen;
+  border-radius: 5px;
+  color: white;
+
+  & .signuptext {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+  }
+
+  & .signupform {
+    & input[type="text"] {
+      position: relative;
+      left: -50px;
+      top: 100px;
+      width: 250px;
+      height: 30px;
+      padding-left: 20px;
+      border: 2px solid black;
+      border-radius: 5px;
+
+      &:focus {
+        border-color: green;
+      }
+    }
+
+    & input[type="email"] {
+      position: relative;
+      left: -50px;
+      top: 150px;
+      width: 250px;
+      height: 30px;
+      padding-left: 20px;
+      border: 2px solid black;
+      border-radius: 5px;
+
+      &:focus {
+        border-color: green;
+      }
+    }
+
+    & .pass {
+      position: relative;
+      left: -50px;
+      top: 200px;
+      width: 250px;
+      height: 30px;
+      padding-left: 20px;
+      border: 2px solid black;
+      border-radius: 5px;
+
+      &:focus {
+        border-color: green;
+      }
+    }
+
+    & .repass {
+      position: relative;
+      left: -50px;
+      top: 250px;
+      width: 250px;
+      height: 30px;
+      padding-left: 20px;
+      border: 2px solid black;
+      border-radius: 5px;
+
+      &:focus {
+        border-color: green;
+      }
+    }
+
+    & .signupbutton {
+      text-decoration: none;
+      color: white;
+      position: absolute;
+      left: 12px;
+      top: 420px;
+      width: 270px;
+      height: 30px;
+      padding-top: 5px;
+      text-align: center;
+      vertical-align: middle;
+      border: 2px solid black;
+      border-radius: 5px;
+      background-color: #284b63;
+    }
+  }
+}
