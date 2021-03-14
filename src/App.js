@@ -53,7 +53,7 @@ class App extends React.Component {
         <LoginPage />
       )
     ) : (
-      <div></div>
+      <LoginPage />
     );
   };
 
