@@ -3,7 +3,7 @@ import { setCurrentUser } from '../../../redux/user/user.actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './login.styles.scss';
-
+import { signInWithGoogle } from '../../../firebase/firebase.utils';
 
 class Login extends React.Component {
 
@@ -14,6 +14,7 @@ class Login extends React.Component {
             username: '',
             password: '',
             email: '',
+            page: '/',
         }
     }
 
@@ -28,13 +29,7 @@ class Login extends React.Component {
     }
 
     handleGoogleLogin = (e) => {
-        const { setCurrentUser } = this.props;
-        // handle signin logic using auth first
-        // if user enters name instead of email check in db for username
-        // if exists get the email also.
-        // if it doesnt exists in both, consloe.log(error)
-        setCurrentUser(this.state);
-
+        signInWithGoogle();
     }
 
     handleChange = (e) => {
@@ -58,8 +53,12 @@ class Login extends React.Component {
     }
 }
 
+const mapStatetoProps = state => ({
+    page: state.user.page
+});
+
 const mapDispatchtoProps = (dispatch) => ({
     setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchtoProps)(Login);
+export default connect(mapStatetoProps, mapDispatchtoProps)(Login);

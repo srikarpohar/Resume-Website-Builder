@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   currentUser: null,
+  count: 0,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -7,6 +8,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case "SET_CURRENT_USER":
       return {
         ...state,
+        count: action.payload.count,
         currentUser: action.payload.username,
       };
     default:
